@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="contactListApp" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>My AngularJS App</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  <script src="app.js"></script>
+</head>
+<body ng-controller="contactListCtrl">
+
+   Search: <input ng-model="query">
+        Sort by:
+        <select ng-model="orderProp">
+          <option value="first">First Name</option>
+          <option value="last">Last Name</option>
+		   <option value="extension">Extension</option> 
+        </select>
+
+     <table>
+		<tr>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>E-Mail</th>
+			<th>Phone Number</th>
+		<tr>
+		<tr ng-repeat="contact in contacts | filter:query | orderBy:orderProp">
+			<td class="first">{{contact.first}}</td>
+			<td class="last">{{contact.last}}</td>
+			<td class="email">{{contact.first+'.'+contact.last+'@lambtoncollege.ca'}}</td>
+			<td class="phone">{{'519-542-7751 ext.'+contact.extension}}</td>
+		</tr>
+	</table>
+	     
+</body>
+</html>
